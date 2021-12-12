@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 // ~Add all class
 use App\Http\Controllers\ContactController;
 
+// ~ Add all model
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,5 +31,8 @@ Route::get('/home', function () {
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+
+    // ~fetch users table data
+    $users = User::all();
+    return view('dashboard', compact('users'));
 })->name('dashboard');
