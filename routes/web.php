@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // ~Add all class
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
 
 // ~Add all model
 use App\Models\User; // ~Eloquent method
@@ -33,11 +34,14 @@ Route::get('/home', function () {
 // ~Add all controller
 Route::get('/contact', [ContactController::class, 'index']);
 
+// ~Category Controller
+Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
+Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('store.category');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-
     // ~fetch users table data
-    $users = User::all();
+    $users = User::all(); //~Eloquent method
     // $users = DB::table('users')->get(); // ~Query builder method
-
     return view('dashboard', compact('users'));
 })->name('dashboard');
