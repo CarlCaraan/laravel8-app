@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 // ~Add all class
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 // ~Add all model
 use App\Models\User; // ~Eloquent method
@@ -34,7 +34,7 @@ Route::get('/home', function () {
 // ~Add all controller
 Route::get('/contact', [ContactController::class, 'index']);
 
-// ~Category Controller
+// ~Category Routes
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
 Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('store.category'); // ~Add Category or inserting data
 Route::get('/category/edit/{id}', [CategoryController::class, 'Edit']); // ~Edit Category route after clicking the edit button
@@ -42,6 +42,10 @@ Route::post('/category/update/{id}', [CategoryController::class, 'Update']); // 
 Route::get('/softdelete/category/{id}', [CategoryController::class, 'SoftDelete']); // ~SoftDelete Category
 Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']); // ~Restore Category
 Route::get('/delete/category/{id}', [CategoryController::class, 'Delete']); // ~Delete Category
+
+// ~Brand Routes
+Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand'); 
+Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand'); // ~Add brand or inserting data
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data

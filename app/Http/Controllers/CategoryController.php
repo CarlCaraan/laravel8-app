@@ -47,17 +47,17 @@ class CategoryController extends Controller
 
         // ~Inserting data to db
         // ~Eloquent method1
-        // Category::insert([
-        //     'category_name' => $request->category_name,
-        //     'user_id' => Auth::user()->id,
-        //     'created_at' => Carbon::now()
-        // ]);
+        Category::insert([
+            'category_name' => $request->category_name,
+            'user_id' => Auth::user()->id,
+            'created_at' => Carbon::now()
+        ]);
         
         // ~Eloquent method2
-        $category = new Category;
-        $category->category_name = $request->category_name;
-        $category->user_id = Auth::user()->id;
-        $category->save();
+        // $category = new Category;
+        // $category->category_name = $request->category_name;
+        // $category->user_id = Auth::user()->id;
+        // $category->save();
 
         // ~Query builder method
         // $data = array();
