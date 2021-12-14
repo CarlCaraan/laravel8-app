@@ -36,8 +36,12 @@ Route::get('/contact', [ContactController::class, 'index']);
 
 // ~Category Controller
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
-Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('store.category');
-
+Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('store.category'); // ~Add Category or inserting data
+Route::get('/category/edit/{id}', [CategoryController::class, 'Edit']); // ~Edit Category route after clicking the edit button
+Route::post('/category/update/{id}', [CategoryController::class, 'Update']); // ~Update Category
+Route::get('/softdelete/category/{id}', [CategoryController::class, 'SoftDelete']); // ~SoftDelete Category
+Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']); // ~Restore Category
+Route::get('/delete/category/{id}', [CategoryController::class, 'Delete']); // ~Delete Category
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data

@@ -29,28 +29,38 @@
                                     <tr>
                                         <th scope="col">SL NO</th>
                                         <th scope="col">Category Name</th>
-                                        <th scope="col">Username</th>
+                                        <th scope="col">User</th>
                                         <th scope="col">Created At</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php($i = 1)
+                                    <!-- @php($i = 1) -->
                                     @foreach($categories as $category)
                                     <tr>
-                                        <th scope="row">{{ $i++ }}</th>
+                                        <th scope="row">{{ $categories->firstItem()+$loop->index }}</th>
                                         <td>{{ $category->category_name }}</td>
-                                        <td>{{ $category->user_id }}</td>
+                                        <td>{{ $category->user->name }}</td>
                                         <td>
                                             @if($category->created_at == NULL)
                                             <span class="text-danger">No Date Set</span>
                                             @else
-                                            {{ $category->created_at->diffForHumans() }}
+                                            {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-info">Edit</a>
+                                            <a href="{{ url('softdelete/category/'.$category->id) }}" class="btn btn-danger">Trash</a>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            <!-- Start Pagination -->
+                            {{ $categories->links() }}
+                            <!-- End Pagination -->
+
                         </div> <!-- End Table Responsive -->
                     </div> <!-- End Card -->
                 </div> <!-- End Col -->
@@ -66,7 +76,7 @@
                                     <label for="exampleInputEmail1">Category Name</label>
                                     <input type="text" class="form-control" name="category_name" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     @error('category_name')
-                                        <span class="text-danger">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add Category</button>
@@ -78,5 +88,62 @@
 
             </div> <!-- End Row -->
         </div>
+
+        <!-- Start Trash Category -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card card-default">
+
+                        <div class="card-header">Trashed List</div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">SL NO</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">User</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- @php($i = 1) -->
+                                    @foreach($trashedCat as $category)
+                                    <tr>
+                                        <th scope="row">{{ $categories->firstItem()+$loop->index }}</th>
+                                        <td>{{ $category->category_name }}</td>
+                                        <td>{{ $category->user->name }}</td>
+                                        <td>
+                                            @if($category->created_at == NULL)
+                                            <span class="text-danger">No Date Set</span>
+                                            @else
+                                            {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-success">Restore</a>
+                                            <a href="{{ url('delete/category/'.$category->id) }}" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                            <!-- Start Pagination -->
+                            {{ $trashedCat->links() }}
+                            <!-- End Pagination -->
+
+                        </div> <!-- End Table Responsive -->
+                    </div> <!-- End Card -->
+                </div> <!-- End Col -->
+
+                <div class="col-md-4">
+                </div> <!-- End Col -->
+
+            </div> <!-- End Row -->
+        </div>
+        <!-- End Trash Category -->
+
     </div>
 </x-app-layout>

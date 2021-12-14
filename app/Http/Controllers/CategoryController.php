@@ -17,12 +17,23 @@ class CategoryController extends Controller
     // ~Add anchor tag link or the main route link
     public function AllCat()
     {   
+        // ~One to one relationship using query builder
+        // $categories = DB::table('categories')
+        //     ->join('users', 'categories.user_id', 'users.id')
+        //     ->select('categories.*', 'users.name')
+        //     ->latest()->paginate(5);
+
         // ~Fetch all data in categories table
-        $categories = Category::latest()->get();
-        return view('/admin.category.index', compact('categories'));
+        $categories = Category::latest()->paginate(5); // ~Eloquent method
+
+        // ~Fetch trashed categories
+        $trashedCat = Category::onlyTrashed()->latest()->paginate(3);
+        // $categories = DB::table('categories')->latest()->get(); // ~Query builder method
+
+        return view('admin.category.index', compact('categories', 'trashedCat'));
     }
 
-    // ~Add categories method
+    // ~ Store category
     public function AddCat(Request $request)
     {
         // ~Validate the request...
@@ -56,5 +67,52 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('success', 'Category Inserted Successfully');
 
+    }
+
+    // ~Return view of edit category button
+    public function Edit($id)
+    {
+        $categories = Category::find($id); // ~Eloquent method
+        // $categories = DB::table('categories')->where('id', $id)->first(); // ~Query builder method
+        return view('admin.category.edit', compact('categories'));
+    }
+
+    // ~Update category
+    public function Update(Request $request, $id)
+    {   
+        // ~Eloquent method
+        $update = Category::find($id)->update([
+            'category_name' => $request->category_name,
+            'user_id' => Auth::user()->id
+        ]);
+
+        // ~Query builder method
+        // $data = array();
+        // $data['category_name'] = $request->category_name;
+        // $data['user_id'] = Auth::user()->id;
+        // DB::table('categories')->where('id', $id)->update($data);
+
+        return redirect()->route('all.category')->with('success', 'Category Updated Successfully');
+    }
+
+    // ~SoftDelete
+    public function SoftDelete($id)
+    {
+        $softdelete = Category::find($id)->delete();
+        return redirect()->back()->with('success', 'Category Trashed Successfully');
+    }
+
+    // ~Restore Category
+    public function Restore($id)
+    {
+        $restore = Category::withTrashed()->find($id)->restore();
+        return redirect()->back()->with('success', 'Category Restore Successfully');
+    }
+
+    // ~Delete Category
+    public function Delete($id)
+    {
+        $delete = Category::onlyTrashed()->find($id)->forceDelete();
+        return redirect()->back()->with('success', 'Category Deleted Successfully');
     }
 }
