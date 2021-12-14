@@ -46,6 +46,8 @@ Route::get('/delete/category/{id}', [CategoryController::class, 'Delete']); // ~
 // ~Brand Routes
 Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand'); 
 Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('store.brand'); // ~Add brand or inserting data
+Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']); // ~Edit brand route after clicking the edit button
+Route::post('/brand/update/{id}', [BrandController::class, 'Update']); // ~Update Brand
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
