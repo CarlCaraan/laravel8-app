@@ -100,10 +100,9 @@ return [
         ],
     ],
 
-    // ~Add custom email sender
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'Laravel8@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Laravel8'),
+        'address' => env('MAIL_FROM_ADDRESS', 'Example@mail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
     /*
