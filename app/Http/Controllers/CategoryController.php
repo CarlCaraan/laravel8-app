@@ -14,6 +14,12 @@ use Illuminate\Support\Carbon;
 
 class CategoryController extends Controller
 {
+    // ~Add middleware
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // ~Add anchor tag link or the main route link
     public function AllCat()
     {   

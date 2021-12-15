@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\DB; // ~Query builder method
 |
 */
 
+// ~Verify email addres route
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -56,7 +61,7 @@ Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('store.ima
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
-    $users = User::all(); //~Eloquent method
+    // $users = User::all(); //~Eloquent method
     // $users = DB::table('users')->get(); // ~Query builder method
-    return view('dashboard', compact('users'));
+    return view('admin.index');
 })->name('dashboard');
