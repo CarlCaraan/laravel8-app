@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 
 use App\Models\Brand; // ~Eloquent method
 use App\Models\Multipic; // ~Eloquent method
+use Auth;
 
 use Image;
 
@@ -147,5 +148,11 @@ class BrandController extends Controller
             ]);
         }
         return redirect()->back()->with('success', 'Brand Inserted Successfully');
+    }
+
+    public function Logout()
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'User logout');
     }
 }
