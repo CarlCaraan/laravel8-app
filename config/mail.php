@@ -91,9 +91,19 @@ return [
     |
     */
 
+    //~ Dont use mailtrap virtual inbox
+    'stream'=>[
+        'ssl'=>[
+            'allow_self_signed'=>true,
+            'verify_peer'=>false,
+            'verify_peer_name'=>false,
+        ],
+    ],
+
+    // ~Add custom email sender
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'Laravel8@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Laravel8'),
     ],
 
     /*

@@ -50,6 +50,10 @@ Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']); // ~Edit brand
 Route::post('/brand/update/{id}', [BrandController::class, 'Update']); // ~Update Brand
 Route::get('/delete/brand/{id}', [BrandController::class, 'Delete']); // ~Delete Brand
 
+// ~Brand Routes
+Route::get('/multi/image', [BrandController::class, 'AllMulti'])->name('multi.image'); 
+Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('store.image'); // ~Add multi image or inserting data
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
     $users = User::all(); //~Eloquent method
