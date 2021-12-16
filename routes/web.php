@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // ~Add all class
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\HomeController;
 
 // ~Add all model
 use App\Models\User; // ~Eloquent method
@@ -59,6 +60,11 @@ Route::get('/delete/brand/{id}', [BrandController::class, 'Delete']); // ~Delete
 // ~Brand Routes
 Route::get('/multi/image', [BrandController::class, 'AllMulti'])->name('multi.image'); 
 Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('store.image'); // ~Add multi image or inserting data
+
+// ~Home Slider Routes
+Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider'); 
+Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider'); //~ Add home slider
+Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider'); //~ Add home slider
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
