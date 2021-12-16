@@ -1,15 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            All Brand <b></b>
-        </h2>
-    </x-slot>
+@extends('admin.admin_master')
 
+@section('admin')
     <div class="py-12">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card card-default">
+                    <div class="card">
 
                         <!-- Start Success Message -->
                         @if(session('success'))
@@ -58,7 +54,9 @@
                             </table>
 
                             <!-- Start Pagination -->
-                            {{ $brands->links() }}
+                            <div class="float-right mb-3 mr-3"> 
+                                {{ $brands->links() }}
+                            </div>
                             <!-- End Pagination -->
 
                         </div> <!-- End Table Responsive -->
@@ -67,7 +65,7 @@
 
                 <div class="col-md-4">
 
-                    <div class="card card-default">
+                    <div class="card">
                         <div class="card-header">Add Brand</div>
                         <div class="card-body">
                             <form action="{{ route('store.brand') }}" method="POST" enctype="multipart/form-data">
@@ -95,4 +93,4 @@
             </div> <!-- End Row -->
         </div> <!-- End Container -->
     </div>
-</x-app-layout>
+@endsection

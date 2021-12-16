@@ -180,15 +180,14 @@
 
 
             <div class="content-wrapper">
-                @yield('dashboard')
+                <div class="content">
+                    @yield('admin')
+                </div>  
             </div>
 
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
-                    <p>
-                        &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
-                        <a class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
-                    </p>
+                    <p>&copy; <span id="copy-year">2021</span> Copyright Plousious</p>
                 </div>
                 <script>
                     var d = new Date();
@@ -200,7 +199,6 @@
         </div>
     </div>
 
-    {{ asset('backend/') }}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
     <script src="{{ asset('backend/assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -220,7 +218,7 @@
     <script src="{{ asset('backend/assets/js/chart.js') }}"></script>
     <script src="{{ asset('backend/assets/js/date-range.js') }}"></script>
     <script src="{{ asset('backend/assets/js/map.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/custom.j') }}s"></script>
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 
 
 
