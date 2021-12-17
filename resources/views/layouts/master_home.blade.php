@@ -39,12 +39,8 @@
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     @include('layouts.body.header')
-
-    <!-- ======= Hero Section ======= -->
-    @include('layouts.body.slider')
 
     <!-- ======= Home Content ======= -->
     @yield('home_content')

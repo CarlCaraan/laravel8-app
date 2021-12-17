@@ -32,9 +32,10 @@ Route::get('/email/verify', function () {
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    // $sliders = DB::table('sliders')->get();
-    return view('home', compact('brands'));
-});
+    $abouts = DB::table('home_abouts')->first();
+    $multipics = DB::table('multipics')->get();
+    return view('home', compact('brands', 'abouts', 'multipics'));
+})->name('/homepage');
 
 Route::get('/home', function () {
     return view('home');
@@ -59,7 +60,7 @@ Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']); // ~Edit brand
 Route::post('/brand/update/{id}', [BrandController::class, 'Update']); // ~Update Brand
 Route::get('/delete/brand/{id}', [BrandController::class, 'Delete']); // ~Delete Brand
 
-// ~Brand Routes
+// ~Multipic Routes
 Route::get('/multi/image', [BrandController::class, 'AllMulti'])->name('multi.image'); 
 Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('store.image'); // ~Add multi image or inserting data
 
@@ -78,6 +79,9 @@ Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store
 Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']); //~ Edit about
 Route::post('/about/update/{id}', [AboutController::class, 'UpdateAbout']); // ~Update About 
 Route::get('/delete/about/{id}', [AboutController::class, 'Delete']); // ~Delete Slider
+
+// ~Portfolio
+Route::get('/portfolio', [AboutController::class, 'Portfolio'])->name('portfolio'); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
