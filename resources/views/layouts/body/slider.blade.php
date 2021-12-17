@@ -1,6 +1,5 @@
 @php
 $sliders = DB::table('sliders')->get();
-
 @endphp
 <section id="hero">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">

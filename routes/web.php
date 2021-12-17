@@ -31,6 +31,7 @@ Route::get('/email/verify', function () {
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
+    // $sliders = DB::table('sliders')->get();
     return view('home', compact('brands'));
 });
 
