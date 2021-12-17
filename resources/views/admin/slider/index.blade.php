@@ -48,20 +48,21 @@
                                     <td><img src="{{ asset($slider->image) }}" width="70px" height="40px" alt=""></td>
                                     <td>
                                         <a href="{{ url('slider/edit/'.$slider->id) }}" class="btn btn-info">Edit</a>
-                                        <a href="{{ url('delete/slider/'.$slider->id) }}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a>
+                                        <!-- <a href="{{ url('delete/slider/'.$slider->id) }}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a> -->
+                                        <button class=" btn btn-danger" data-target="#deleteModal" data-toggle="modal" onclick="handleDelete({{ $slider->id }})">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        
                         <!-- Start Pagination -->
                         <div class="float-right mb-3 mr-3">
                             {{ $sliders->links() }}
                         </div>
                         <!-- End Pagination -->
-
                     </div> <!-- End Table Responsive -->
+                        
                 </div> <!-- End Card -->
             </div> <!-- End Col -->
 
@@ -70,4 +71,34 @@
         </div> <!-- End Row -->
     </div> <!-- End Container -->
 </div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Slider</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this row?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="" id="delete_id" class=" btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Modal -->
+
+<script>
+    //Delete function modal
+    function handleDelete(id) {
+        var a = document.getElementById('delete_id')
+        a.href = '/delete/slider/' + id
+        $('#deleteModal').modal('show')
+    }
+</script>
 @endsection

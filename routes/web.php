@@ -77,6 +77,7 @@ Route::get('/add/about', [AboutController::class, 'AddAbout'])->name('add.about'
 Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store.about'); //~ Store about
 Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']); //~ Edit about
 Route::post('/about/update/{id}', [AboutController::class, 'UpdateAbout']); // ~Update About 
+Route::get('/delete/about/{id}', [AboutController::class, 'Delete']); // ~Delete Slider
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data

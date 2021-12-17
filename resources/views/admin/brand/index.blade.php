@@ -20,7 +20,7 @@
 
                     <div class="card-header">All Brand</div>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table id="admin_table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">SL NO</th>
@@ -46,13 +46,14 @@
                                     </td>
                                     <td>
                                         <a href="{{ url('brand/edit/'.$brand->id) }}" class="btn btn-info">Edit</a>
-                                        <a href="{{ url('delete/brand/'.$brand->id) }}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a>
+                                        <!-- <a href="{{ url('delete/brand/'.$brand->id) }}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a> -->
+                                        <button class=" btn btn-danger" data-target="#deleteModal" data-toggle="modal" onclick="handleDelete({{ $brand->id }})">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        
                         <!-- Start Pagination -->
                         <div class="float-right mb-3 mr-3"> 
                             {{ $brands->links() }}
@@ -60,6 +61,7 @@
                         <!-- End Pagination -->
 
                     </div> <!-- End Table Responsive -->
+
                 </div> <!-- End Card -->
             </div> <!-- End Col -->
 
@@ -93,4 +95,34 @@
         </div> <!-- End Row -->
     </div> <!-- End Container -->
 </div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Brand</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this row?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="" id="delete_id" class=" btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Modal -->
+
+<script>
+    //Delete function modal
+    function handleDelete(id) {
+        var a = document.getElementById('delete_id')
+        a.href = '/delete/brand/' + id
+        $('#deleteModal').modal('show')
+    }
+</script>
 @endsection
