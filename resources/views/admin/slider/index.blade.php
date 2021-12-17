@@ -31,11 +31,11 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">SL NO</th>
-                                    <th scope="col">Slider Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" width="5%">SL NO</th>
+                                    <th scope="col" width="10%">Slider Title</th>
+                                    <th scope="col" width="30%">Description</th>
+                                    <th scope="col" width="10%">Image</th>
+                                    <th scope="col" width="10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
