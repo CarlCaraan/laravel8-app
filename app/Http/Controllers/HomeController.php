@@ -103,7 +103,7 @@ class HomeController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            return redirect()->back()->with('success', 'Slider Updated Successfully');
+            return redirect()->route('home.slider')->with('success', 'Slider Updated Successfully');
         }
     }
     

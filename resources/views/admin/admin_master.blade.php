@@ -20,6 +20,7 @@
     <link href="{{ asset('backend/assets/plugins/ladda/ladda.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('backend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('backend/assets/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" rel="stylesheet" /> <!-- Trix CDN -->
 
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
@@ -219,6 +220,7 @@
     <script src="{{ asset('backend/assets/js/date-range.js') }}"></script>
     <script src="{{ asset('backend/assets/js/map.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script> <!-- Trix CDN -->
 
 
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 
 // ~Add all model
 use App\Models\User; // ~Eloquent method
@@ -69,6 +70,13 @@ Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('stor
 Route::get('/slider/edit/{id}', [HomeController::class, 'EditSlider']); // ~Edit Slider route after clicking the edit button
 Route::post('/slider/update/{id}', [HomeController::class, 'UpdateSlider']); // ~Update Slider 
 Route::get('/delete/slider/{id}', [HomeController::class, 'Delete']); // ~Delete Slider
+
+// ~Home About Routes
+Route::get('/home/about', [AboutController::class, 'HomeAbout'])->name('home.about'); 
+Route::get('/add/about', [AboutController::class, 'AddAbout'])->name('add.about'); //~ Add about
+Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store.about'); //~ Store about
+Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']); //~ Edit about
+Route::post('/about/update/{id}', [AboutController::class, 'UpdateAbout']); // ~Update About 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
