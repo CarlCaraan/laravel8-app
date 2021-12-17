@@ -42,6 +42,8 @@
     <!-- ======= Header ======= -->
     @include('layouts.body.header')
 
+
+
     <!-- ======= Home Content ======= -->
     @yield('home_content')
 

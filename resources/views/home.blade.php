@@ -1,9 +1,10 @@
 @extends('layouts.master_home')
 
+@section('home_content')
+
 <!-- ======= Hero Section ======= -->
 @include('layouts.body.slider')
-
-@section('home_content')
+<?php $page = "home"; ?>
 <main id="main">
     <!-- ======= About Us Section ======= -->
     <section id="about-us" class="about-us">

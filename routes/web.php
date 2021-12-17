@@ -35,7 +35,7 @@ Route::get('/', function () {
     $abouts = DB::table('home_abouts')->first();
     $multipics = DB::table('multipics')->get();
     return view('home', compact('brands', 'abouts', 'multipics'));
-})->name('/homepage');
+})->name('homepage');
 
 Route::get('/home', function () {
     return view('home');

@@ -1,15 +1,16 @@
 @extends('layouts.master_home')
 
 @section('home_content')
+<?php $page = 'portfolio'; ?>
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-            <h2>Portolio</h2>
+            <h2>Portfolio</h2>
             <ol>
-                <li><a href="{{ route('/homepage') }}">Home</a></li>
-                <li>Portolio</li>
+                <li><a href="{{ route('homepage') }}">Home</a></li>
+                <li>Portfolio</li>
             </ol>
         </div>
 
