@@ -87,6 +87,8 @@ class AboutController extends Controller
         return redirect()->back()->with('success', 'About Deleted Successfully');
     }
 
+    //========= HOME PORTFOLIO =========//
+
     public function Portfolio()
     {
         $multipics = Multipic::all();

@@ -122,7 +122,7 @@ class BrandController extends Controller
         return redirect()->back()->with('success', 'Brand Deleted Successfully');
     }
 
-    //========= ~START MULTI IMAGE =========
+    //========= ADMIN MULTIPIC IMAGE =========//
 
     // ~Multi image method
     public function AllMulti()

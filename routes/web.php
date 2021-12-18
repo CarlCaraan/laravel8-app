@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChangePassword;
 
 // ~Add all model
 use App\Models\User; // ~Eloquent method
@@ -73,7 +74,7 @@ Route::get('/add/about', [AboutController::class, 'AddAbout'])->name('add.about'
 Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store.about'); //~ Store about
 Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']); //~ Edit about
 Route::post('/about/update/{id}', [AboutController::class, 'UpdateAbout']); // ~Update About 
-Route::get('/delete/about/{id}', [AboutController::class, 'Delete']); // ~Delete Slider
+Route::get('/delete/about/{id}', [AboutController::class, 'Delete']); // ~Delete 
 
 // ~Portfolio
 Route::get('/portfolio', [AboutController::class, 'Portfolio'])->name('portfolio'); 
@@ -84,11 +85,23 @@ Route::get('/admin/add/contact', [ContactController::class, 'AdminAddContact'])-
 Route::post('/admin/store/contact', [ContactController::class, 'AdminStoreContact'])->name('store.contact'); 
 Route::get('/contact/edit/{id}', [ContactController::class, 'AdminEditContact']); 
 Route::post('/contact/update/{id}', [ContactController::class, 'AdminUpdateContact']); 
-Route::get('/delete/contact/{id}', [ContactController::class, 'Delete']); // ~Delete Slider
+Route::get('/delete/contact/{id}', [ContactController::class, 'Delete']); // ~Delete 
 
-// ~Contact Page
+// ~Admin Contact Message
+Route::get('/admin/message', [ContactController::class, 'AdminMessage'])->name('admin.message'); 
+Route::get('/admin/add/contactmessage', [ContactController::class, 'AdminAddContactMessage'])->name('add.message'); 
+Route::get('/delete/contactform/{id}', [ContactController::class, 'DeleteMessage']); // ~Delete
+
+// ~Contact Page Form
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact'); 
 Route::post('/contact/form', [ContactController::class, 'StoreContactForm'])->name('contact.form'); 
+
+//Change password and user profile route
+Route::get('/user/password', [ChangePassword::class, 'ChangePassword'])->name('change.password'); 
+Route::post('/password/update', [ChangePassword::class, 'UpdatePassword'])->name('password.update'); 
+
+//User Profile
+Route::get('/user/profile', [ChangePassword::class, 'ProfileUpdate'])->name('profile.update'); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data

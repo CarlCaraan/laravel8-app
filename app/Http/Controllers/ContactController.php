@@ -88,6 +88,22 @@ class ContactController extends Controller
         return redirect()->back()->with('success', 'Contact Deleted Successfully');
     }
 
+    //========= ADMIN CONTACT MESSAGE =========//
+
+    public function AdminMessage()
+    {
+        $contact_forms = ContactForm::latest()->paginate(5);
+        return view('admin.contact.message', compact('contact_forms'));
+    }
+
+    public function DeleteMessage($id)
+    {
+        ContactForm::find($id)->delete();
+        return redirect()->back()->with('success', 'Contact Message Deleted Successfully');
+    }
+
+    //========= HOME CONTACT FORM =========//
+
     public function Contact()
     {
         $contact = Contact::first();
@@ -95,6 +111,7 @@ class ContactController extends Controller
         return view('pages.contact', compact('contact'));
     }
 
+    // Home Contact Form
     public function StoreContactForm(Request $request)
     {
         // ~Validate the request...
