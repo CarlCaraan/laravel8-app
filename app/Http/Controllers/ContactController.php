@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -84,5 +85,12 @@ class ContactController extends Controller
     {
         Contact::find($id)->delete();
         return redirect()->back()->with('success', 'Contact Deleted Successfully');
+    }
+
+    public function Contact()
+    {
+        $contact = Contact::first();
+        // $contact = DB::table('contacts')->first(); // ~Query Builder
+        return view('pages.contact', compact('contact'));
     }
 }

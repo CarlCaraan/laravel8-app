@@ -7,7 +7,9 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li class="<?php if ($page == "home") { echo "active"; } ?>"><a href="{{ route('homepage') }}">Home</a></li>
+                <li class="<?php if ($page == "home") {
+                                echo "active";
+                            } ?>"><a href="{{ route('homepage') }}">Home</a></li>
 
                 <li class="drop-down"><a href="">About</a>
                     <ul>
@@ -27,11 +29,14 @@
                 </li>
 
                 <li><a href="services.html">Services</a></li>
-                <li class="<?php if ($page == "portfolio") { echo "active"; } ?>"><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                <li class="<?php if ($page == "portfolio") {
+                                echo "active";
+                            } ?>"><a href="{{ route('portfolio') }}">Portfolio</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-
+                <li class="<?php if ($page == "contact") {
+                                echo "active";
+                            } ?>"><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </nav><!-- .nav-menu -->
 

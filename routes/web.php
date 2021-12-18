@@ -38,12 +38,6 @@ Route::get('/', function () {
     return view('home', compact('brands', 'abouts', 'multipics'));
 })->name('homepage');
 
-Route::get('/home', function () {
-    return view('home');
-});
-
-// ~Add all controller
-Route::get('/contact', [ContactController::class, 'index']);
 
 // ~Category Routes
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
@@ -84,13 +78,16 @@ Route::get('/delete/about/{id}', [AboutController::class, 'Delete']); // ~Delete
 // ~Portfolio
 Route::get('/portfolio', [AboutController::class, 'Portfolio'])->name('portfolio'); 
 
-// ~Contact
+// ~Admin Contact
 Route::get('/admin/contact', [ContactController::class, 'AdminContact'])->name('admin.contact'); 
 Route::get('/admin/add/contact', [ContactController::class, 'AdminAddContact'])->name('add.contact'); 
 Route::post('/admin/store/contact', [ContactController::class, 'AdminStoreContact'])->name('store.contact'); 
 Route::get('/contact/edit/{id}', [ContactController::class, 'AdminEditContact']); 
 Route::post('/contact/update/{id}', [ContactController::class, 'AdminUpdateContact']); 
 Route::get('/delete/contact/{id}', [ContactController::class, 'Delete']); // ~Delete Slider
+
+// ~Contact Page
+Route::get('/contact', [ContactController::class, 'Contact'])->name('contact'); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
