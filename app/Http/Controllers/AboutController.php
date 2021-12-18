@@ -37,7 +37,7 @@ class AboutController extends Controller
             ]
         );
 
-        // ~Inserting image to db
+        // ~Inserting data to db
         HomeAbout::insert([
             'title' => $request->title,
             'short_desc' => $request->short_desc,

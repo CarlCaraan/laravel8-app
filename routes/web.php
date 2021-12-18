@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 
 // ~Add all model
 use App\Models\User; // ~Eloquent method
@@ -82,6 +83,14 @@ Route::get('/delete/about/{id}', [AboutController::class, 'Delete']); // ~Delete
 
 // ~Portfolio
 Route::get('/portfolio', [AboutController::class, 'Portfolio'])->name('portfolio'); 
+
+// ~Contact
+Route::get('/admin/contact', [ContactController::class, 'AdminContact'])->name('admin.contact'); 
+Route::get('/admin/add/contact', [ContactController::class, 'AdminAddContact'])->name('add.contact'); 
+Route::post('/admin/store/contact', [ContactController::class, 'AdminStoreContact'])->name('store.contact'); 
+Route::get('/contact/edit/{id}', [ContactController::class, 'AdminEditContact']); 
+Route::post('/contact/update/{id}', [ContactController::class, 'AdminUpdateContact']); 
+Route::get('/delete/contact/{id}', [ContactController::class, 'Delete']); // ~Delete Slider
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
