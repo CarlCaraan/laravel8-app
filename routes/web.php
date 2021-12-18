@@ -88,6 +88,7 @@ Route::get('/delete/contact/{id}', [ContactController::class, 'Delete']); // ~De
 
 // ~Contact Page
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact'); 
+Route::post('/contact/form', [ContactController::class, 'StoreContactForm'])->name('contact.form'); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data

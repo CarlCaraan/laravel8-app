@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\ContactForm;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -92,5 +93,35 @@ class ContactController extends Controller
         $contact = Contact::first();
         // $contact = DB::table('contacts')->first(); // ~Query Builder
         return view('pages.contact', compact('contact'));
+    }
+
+    public function StoreContactForm(Request $request)
+    {
+        // ~Validate the request...
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|min:4',
+                'email' => 'required|min:4',
+                'subject' => 'required|min:4',
+                'message' => 'required|min:4',
+            ],
+            // ~Custom Error messages
+            [
+                'name.required' => 'Please input contact name',
+                'email.required' => 'Please input contact email',
+                'subject.required' => 'Please input contact subject',
+                'message.required' => 'Please input contact message',
+            ]
+        );
+
+        ContactForm::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('contact')->with('success', 'Contact Details Sent Successfully');
     }
 }
