@@ -10,6 +10,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ChangePassword;
 
+use Auth as AuthManager;
+
 // ~Add all model
 use App\Models\User; // ~Eloquent method
 
@@ -108,7 +110,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
     // $users = User::all(); //~Eloquent method
     // $users = DB::table('users')->get(); // ~Query builder method
-    return view('admin.index');
+    $user = User::find(AuthManager::user()->id);
+    return view('admin.index', compact('user'));
 })->name('dashboard');
 
 Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logout'); 

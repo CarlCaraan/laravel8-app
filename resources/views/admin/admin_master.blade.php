@@ -138,13 +138,13 @@
                             <!-- User Account -->
                             <li class="dropdown user-menu">
                                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <img src="{{ Auth::user()->profile_photo_url }}" class="user-image" alt="User Image" />
+                                    <img src="{{ ($user->profile_photo_path == NULL) ? Auth::user()->profile_photo_url : asset($user->profile_photo_path); }}" width="40px" height="40px" class="user-image rounded-circle" alt="User Image" />
                                     <span class="d-none d-lg-inline-block">{{ Auth::user()->name }}</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <!-- User image -->
                                     <li class="dropdown-header">
-                                        <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle" alt="User Image" />
+                                        <img src="{{ ($user->profile_photo_path == NULL) ? Auth::user()->profile_photo_url : asset($user->profile_photo_path); }}" width="40px" height="40px" class="user-image rounded-circle" alt="User Image" />
                                         <div class="d-inline-block">
                                             {{ Auth::user()->name }} <small class="pt-1">{{ Auth::user()->email }}</small>
                                         </div>

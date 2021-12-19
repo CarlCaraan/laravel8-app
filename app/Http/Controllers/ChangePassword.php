@@ -47,13 +47,40 @@ class ChangePassword extends Controller
     {
         $user = User::find(auth::user()->id);
         if($user) {
-            // $user->name = $request->name;
-            // $user->email = $request->email;
-            $user->name = $request['name'];
-            $user->email = $request['email'];
 
-            $user->save();
-            return redirect()->back()->with('success', 'Profile Updated Successfully');
+            $old_image = $request->old_image;
+            $image = $request->file('profile_photo_path');
+
+            if($image) {
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image->getClientOriginalExtension());
+                $img_name = $name_gen . '.' . $img_ext;
+                $up_location = 'image/profilepic/';
+                $last_img = $up_location . $img_name;
+                $image->move($up_location, $img_name);
+                
+                if($old_image){
+                    unlink($old_image);
+                }
+
+                // $user->name = $request->name;
+                // $user->email = $request->email;
+                $user->name = $request['name'];
+                $user->email = $request['email'];
+                $user->profile_photo_path = $last_img;
+                $user->save();
+
+                return redirect()->back()->with('success', 'Profile Updated Successfully');
+            }else{
+                // $user->name = $request->name;
+                // $user->email = $request->email;
+                $user->name = $request['name'];
+                $user->email = $request['email'];
+                $user->save();
+
+                return redirect()->back()->with('success', 'Profile Updated Successfully');
+            }
+
         }else{
             return redirect()->back();
         }

@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 
 use App\Models\Brand; // ~Eloquent method
 use App\Models\Multipic; // ~Eloquent method
+use App\Models\User; // ~Eloquent method
 use Auth;
 
 use Image;
@@ -22,7 +23,8 @@ class BrandController extends Controller
     public function AllBrand()
     {
         $brands = Brand::latest()->paginate(5);
-        return view('admin.brand.index', compact('brands'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.brand.index', compact('brands', 'user'));
     }
 
     public function AddBrand(Request $request)
@@ -66,7 +68,8 @@ class BrandController extends Controller
     public function Edit($id)
     {
         $brands = Brand::find($id); // ~Eloquent method
-        return view('admin.brand.edit', compact('brands'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.brand.edit', compact('brands', 'user'));
     }
 
     public function Update(Request $request, $id)
@@ -128,7 +131,8 @@ class BrandController extends Controller
     public function AllMulti()
     {
         $images = Multipic::latest()->paginate(3);
-        return view('admin.multipic.index', compact('images'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.multipic.index', compact('images', 'user'));
     }
 
     public function AddImage(Request $request)

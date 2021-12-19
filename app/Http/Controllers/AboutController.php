@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HomeAbout;
 use App\Models\Multipic;
+use App\Models\User;
 use Illuminate\Support\Carbon;
+use Auth;
 
 class AboutController extends Controller
 {
     public function HomeAbout()
     {
         $abouts = HomeAbout::latest()->paginate(5);
-        return view('admin.about.index', compact('abouts'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.about.index', compact('abouts', 'user'));
     }
 
     public function AddAbout()
@@ -51,7 +54,8 @@ class AboutController extends Controller
     public function EditAbout($id)
     {
         $abouts = HomeAbout::find($id); // ~Eloquent method
-        return view('admin.about.edit', compact('abouts'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.about.edit', compact('abouts', 'user'));
     }
 
     public function UpdateAbout(Request $request, $id)

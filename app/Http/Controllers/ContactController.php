@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\User;
 use App\Models\ContactForm;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class ContactController extends Controller
 {
     public function AdminContact()
     {
         $contacts = Contact::latest()->paginate(5);
-        return view('admin.contact.index', compact('contacts'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.contact.index', compact('contacts', 'user'));
     }
 
     public function AdminAddContact()
@@ -52,7 +55,8 @@ class ContactController extends Controller
     public function AdminEditContact($id)
     {
         $contacts = Contact::find($id); // ~Eloquent method
-        return view('admin.contact.edit', compact('contacts'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.contact.edit', compact('contacts', 'user'));
     }
 
     public function AdminUpdateContact(Request $request, $id)
@@ -93,7 +97,8 @@ class ContactController extends Controller
     public function AdminMessage()
     {
         $contact_forms = ContactForm::latest()->paginate(5);
-        return view('admin.contact.message', compact('contact_forms'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.contact.message', compact('contact_forms', 'user'));
     }
 
     public function DeleteMessage($id)

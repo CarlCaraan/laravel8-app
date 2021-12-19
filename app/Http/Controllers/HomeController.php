@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Image;
 use Auth;
@@ -13,7 +14,8 @@ class HomeController extends Controller
     public function HomeSlider()
     {
         $sliders = Slider::latest()->paginate(5);
-        return view('admin.slider.index', compact('sliders'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.slider.index', compact('sliders', 'user'));
     }
 
     public function AddSlider()
@@ -57,7 +59,8 @@ class HomeController extends Controller
     public function EditSlider($id)
     {
         $sliders = Slider::find($id); // ~Eloquent method
-        return view('admin.slider.edit', compact('sliders'));
+        $user = User::find(Auth::user()->id);
+        return view('admin.slider.edit', compact('sliders', 'user'));
     }
 
     public function UpdateSlider(Request $request, $id)
