@@ -28,9 +28,18 @@ class ChangePassword extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
-            return redirect()->route('login')->with('success', 'Password Updated successfully');
+
+            $notification = array(
+                'message' => 'Password Updated successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('login')->with($notification);
         } else {
-            return redirect()->back()->with('error', 'Current Password is Invalid');
+            $notification = array(
+                'message' => 'Current Password is Invalid',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
         }
     }
 
@@ -71,7 +80,11 @@ class ChangePassword extends Controller
                 $user->profile_photo_path = $last_img;
                 $user->save();
 
-                return redirect()->back()->with('success', 'Profile Updated Successfully');
+                $notification = array(
+                    'message' => 'Profile Updated Successfully',
+                    'alert-type' => 'success'
+                );
+                return redirect()->back()->with($notification);
             }else{
                 // $user->name = $request->name;
                 // $user->email = $request->email;
@@ -79,7 +92,11 @@ class ChangePassword extends Controller
                 $user->email = $request['email'];
                 $user->save();
 
-                return redirect()->back()->with('success', 'Profile Updated Successfully');
+                $notification = array(
+                    'message' => 'Profile Updated Successfully',
+                    'alert-type' => 'success'
+                );
+                return redirect()->back()->with($notification);
             }
 
         }else{
