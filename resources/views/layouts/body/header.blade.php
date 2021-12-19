@@ -37,6 +37,7 @@
                 <li class="<?php if ($page == "contact") {
                                 echo "active";
                             } ?>"><a href="{{ route('contact') }}">Contact</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
             </ul>
         </nav><!-- .nav-menu -->
 

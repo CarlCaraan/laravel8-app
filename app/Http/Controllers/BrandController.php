@@ -153,6 +153,6 @@ class BrandController extends Controller
     public function Logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('success', 'User logout');
+        return redirect()->route('homepage')->with('success', 'User logout');
     }
 }
