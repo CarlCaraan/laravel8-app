@@ -11,7 +11,8 @@ class ChangePassword extends Controller
 {
     public function ChangePassword()
     {
-        return view('admin.body.change_password');
+        $user = User::find(Auth::user()->id);
+        return view('admin.body.change_password', compact('user'));
     }
 
     public function UpdatePassword(Request $request)
