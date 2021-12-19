@@ -24,12 +24,12 @@
             <div class="col-md-4">
 
                 <div class="card card-default">
-                    <div class="card-header">Muilti Image</div>
+                    <div class="card-header">Multi Image</div>
                     <div class="card-body">
                         <form action="{{ route('store.image') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputEmail1"></label>Multi Image</label>
+                                <label for="exampleInputEmail1"></label>Insert Multi Picture</label>
                                 <input type="file" class="form-control" name="image[]" id="exampleInputEmail1" aria-describedby="emailHelp" multiple="">
                                 @error('image')
                                 <span class="text-danger">{{ $message }}</span>

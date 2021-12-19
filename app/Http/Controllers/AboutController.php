@@ -20,7 +20,8 @@ class AboutController extends Controller
 
     public function AddAbout()
     {
-        return view('admin.about.create');
+        $user = User::find(Auth::user()->id);
+        return view('admin.about.create', compact('user'));
     }
 
     public function StoreAbout(Request $request)

@@ -20,7 +20,8 @@ class HomeController extends Controller
 
     public function AddSlider()
     {
-        return view('admin.slider.create');
+        $user = User::find(Auth::user()->id);
+        return view('admin.slider.create', compact('user'));
     }
 
     public function StoreSlider(Request $request)

@@ -21,7 +21,8 @@ class ContactController extends Controller
 
     public function AdminAddContact()
     {
-        return view('admin.contact.create');
+        $user = User::find(Auth::user()->id);
+        return view('admin.contact.create', compact('user'));
     }
 
     public function AdminStoreContact(Request $request)
