@@ -22,26 +22,29 @@ class ChangePassword extends Controller
         ]);
 
         $hashedPassword = Auth::user()->password;
-        if(Hash::check($request->current_password, $hashedPassword)) {
+        if (Hash::check($request->current_password, $hashedPassword)) {
             $user = User::find(Auth::id());
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
             return redirect()->route('login')->with('success', 'Password Updated successfully');
-        }else {
+        } else {
             return redirect()->back()->with('error', 'Current Password is Invalid');
         }
     }
 
     //========= USER PROFILE =========//
-    public function ProfileUpdate()
+    public function EditProfile()
     {
-        if(Auth::user()){
+        if (Auth::user()) {
             $user = User::find(Auth::user()->id);
-            if($user){
+            if ($user) {
                 return view('admin.body.update_profile', compact('user'));
             }
         }
     }
+    public function UpdateProfile(Request $request)
+    {
+        $user = User::find(auth::user()->id);
+    }
 }
-

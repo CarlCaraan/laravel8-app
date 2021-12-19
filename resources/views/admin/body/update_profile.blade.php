@@ -19,7 +19,7 @@
             <h2>User Profile</h2>
         </div>
         <div class="card-body">
-            <form class="form-pill" action="{{ route('password.update') }}" method="post">
+            <form class="form-pill" action="{{ route('user.update.profile') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="password">User Name</label>

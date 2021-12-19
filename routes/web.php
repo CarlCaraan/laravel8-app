@@ -101,7 +101,8 @@ Route::get('/user/password', [ChangePassword::class, 'ChangePassword'])->name('c
 Route::post('/password/update', [ChangePassword::class, 'UpdatePassword'])->name('password.update'); 
 
 //User Profile
-Route::get('/user/profile', [ChangePassword::class, 'ProfileUpdate'])->name('profile.update'); 
+Route::get('/user/profile/edit', [ChangePassword::class, 'EditProfile'])->name('edit.profile'); 
+Route::post('/user/profile/update', [ChangePassword::class, 'UpdateProfile'])->name('user.update.profile'); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // ~fetch users table data
