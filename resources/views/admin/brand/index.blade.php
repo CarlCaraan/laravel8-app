@@ -7,17 +7,6 @@
             <div class="col-md-8">
                 <div class="card">
 
-                    <!-- Start Success Message -->
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ session('success') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
-                    <!-- End Success Message -->
-
                     <div class="card-header">All Brand</div>
                     <div class="table-responsive">
                         <table id="admin_table" class="table table-bordered table-striped">

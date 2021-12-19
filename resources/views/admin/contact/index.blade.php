@@ -15,17 +15,6 @@
             <div class="col-md-12">
                 <div class="card">
 
-                    <!-- Start Success Message -->
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ session('success') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
-                    <!-- End Success Message -->
-
                     <div class="card-header">All Contact</div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">

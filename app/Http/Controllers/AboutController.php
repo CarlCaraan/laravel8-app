@@ -48,8 +48,11 @@ class AboutController extends Controller
             'long_desc' => $request->long_desc,
             'created_at' => Carbon::now()
         ]);
-
-        return redirect()->route('home.about')->with('success', 'About Inserted Successfully');
+        $notification = array(
+            'message' => 'About Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('home.about')->with($notification);
     }
 
     public function EditAbout($id)
@@ -82,14 +85,21 @@ class AboutController extends Controller
             'long_desc' => $request->long_desc,
             'created_at' => Carbon::now()
         ]);
-
-        return redirect()->route('home.about')->with('success', 'About Updated Successfully');
+        $notification = array(
+            'message' => 'About Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('home.about')->with($notification);
     }
 
     public function Delete($id)
     {
         HomeAbout::find($id)->delete();
-        return redirect()->back()->with('success', 'About Deleted Successfully');
+        $notification = array(
+            'message' => 'About Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     //========= HOME PORTFOLIO =========//

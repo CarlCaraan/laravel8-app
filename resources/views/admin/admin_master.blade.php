@@ -21,6 +21,7 @@
     <link href="{{ asset('backend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('backend/assets/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" rel="stylesheet" /> <!-- Trix CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" />
 
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
@@ -221,8 +222,30 @@
     <script src="{{ asset('backend/assets/js/map.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script> <!-- Trix CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    <script>
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch (type) {
+              case 'info':
+                toastr.info("{{ Session::get('message') }}")
+                break;
 
+            case 'success':
+                toastr.success("{{ Session::get('message') }}")
+                break;
+
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}")
+                break;
+
+            case 'error':
+                toastr.error("{{ Session::get('message') }}")
+                break;
+        }
+        @endif
+    </script>
 
 
 </body>

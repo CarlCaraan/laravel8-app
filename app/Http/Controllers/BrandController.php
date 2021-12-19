@@ -62,7 +62,11 @@ class BrandController extends Controller
         // $last_img = $up_location.$img_name;
         // $brand_image->move($up_location,$img_name);
 
-        return redirect()->back()->with('success', 'Brand Inserted Successfully');
+        $notification = array(
+            'message' => 'Brand Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function Edit($id)
@@ -104,14 +108,21 @@ class BrandController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            return redirect()->back()->with('success', 'Brand Updated Successfully');
+            $notification = array(
+                'message' => 'Brand Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('all.brand')->with($notification);
         }else{
             Brand::find($id)->update([
                 'brand_name' => $request->brand_name,
                 'created_at' => Carbon::now()
             ]);
-
-            return redirect()->back()->with('success', 'Brand Updated Successfully');
+            $notification = array(
+                'message' => 'Brand Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('all.brand')->with($notification);
         }
     }
 
@@ -122,7 +133,11 @@ class BrandController extends Controller
         unlink($old_image);
 
         Brand::find($id)->delete();
-        return redirect()->back()->with('success', 'Brand Deleted Successfully');
+        $notification = array(
+            'message' => 'Brand Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     //========= ADMIN MULTIPIC IMAGE =========//
@@ -151,7 +166,11 @@ class BrandController extends Controller
                 'created_at' => Carbon::now()
             ]);
         }
-        return redirect()->back()->with('success', 'Brand Inserted Successfully');
+        $notification = array(
+            'message' => 'Portfolio Image Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function Logout()
