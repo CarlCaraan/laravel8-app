@@ -26,8 +26,6 @@
         <!-- SLEEK CSS -->
         <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
 
-
-
         <!-- FAVICON -->
         <link href="{{ asset('backend/assets/img/favicon.png') }}" rel="shortcut icon" />
 
@@ -40,6 +38,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
         <script src="{{ asset('backend/assets/plugins/nprogress/nprogress.js') }}"></script>
+
     </head>
 
 </head>
@@ -69,9 +68,9 @@
                         @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>{{ session('success') }}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>
+                            </button> -->
                         </div>
                         @endif
                         <!-- End Success Message -->
@@ -113,6 +112,8 @@
             <p class="text-center">&copy; 2021 Copyright Plousious</p>
         </div>
     </div>
+
 </body>
+
 
 </html>

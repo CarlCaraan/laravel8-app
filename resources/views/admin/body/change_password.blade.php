@@ -12,8 +12,8 @@
                 @csrf
                 <div class="form-group">
                     <label for="current_password">Current Password</label>
-                    <input type="password" name="current_password" class="form-control" id="current_password" placeholder="Current Password">
-                    @error('current_password')
+                    <input type="password" name="old_password" class="form-control" id="current_password" placeholder="Current Password">
+                    @error('old_password')
                     <span class="text-danger">
                         {{ $message }}
                     </span>

@@ -18,22 +18,18 @@ class ChangePassword extends Controller
     public function UpdatePassword(Request $request)
     {
         $validateData = $request->validate([
-            'current_password' => 'required',
+            'old_password' => 'required',
             'password' => 'required|confirmed',
         ]);
 
         $hashedPassword = Auth::user()->password;
-        if (Hash::check($request->current_password, $hashedPassword)) {
+        if (Hash::check($request->old_password, $hashedPassword)) {
             $user = User::find(Auth::id());
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
 
-            $notification = array(
-                'message' => 'Password Updated successfully',
-                'alert-type' => 'success'
-            );
-            return redirect()->route('login')->with($notification);
+            return redirect()->route('login')->with('success', 'User Password Updated Successfully');
         } else {
             $notification = array(
                 'message' => 'Current Password is Invalid',
