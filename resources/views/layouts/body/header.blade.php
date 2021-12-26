@@ -11,11 +11,11 @@
                                 echo "active";
                             } ?>"><a href="{{ route('homepage') }}">Home</a></li>
 
-                <li class="drop-down"><a href="">About</a>
+                <li class="drop-down"><a href="#">About</a>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Team</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Testimonials</a></li>
                         <li class="drop-down"><a href="#">Deep Drop Down</a>
                             <ul>
                                 <li><a href="#">Deep Drop Down 1</a></li>
@@ -28,12 +28,12 @@
                     </ul>
                 </li>
 
-                <li><a href="services.html">Services</a></li>
+                <li><a href="#">Services</a></li>
                 <li class="<?php if ($page == "portfolio") {
                                 echo "active";
                             } ?>"><a href="{{ route('portfolio') }}">Portfolio</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Blog</a></li>
                 <li class="<?php if ($page == "contact") {
                                 echo "active";
                             } ?>"><a href="{{ route('contact') }}">Contact</a></li>
